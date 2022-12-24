@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/msalihovic3/config
+          clone-on-start: true
+          username: msalihovic3
+          password: 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
+  security:
+    user:
+      name: msalihovic3
+      password: m1234

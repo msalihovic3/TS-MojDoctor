@@ -1,0 +1,14 @@
+zuul:
+  routes:
+    user_service:
+      path: /user_service/**
+      url: http://localhost:8091
+  sensitive-headers:
+
+spring:
+  application:
+    name: API_GATEWAY
+
+server:
+  port: 8083
+
