@@ -109,8 +109,8 @@ public class UserService {
         user.setRoles(roles);
         System.out.println(user);
         usersRepository.save(user);
-        System.out.println(user.getEmail());
-        mailService.sendmail(user.getEmail(), user.getName(), user.getToken(), "REGISTRATION");
+//        System.out.println(user.getEmail());
+//        mailService.sendmail(user.getEmail(), user.getName(), user.getToken(), "REGISTRATION");
 
         return new Response("The role is succesfully assigned to the User!", HttpStatus.OK);
     }
