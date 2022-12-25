@@ -2,48 +2,35 @@ Projekat je realizovan na predmetu Praktikum - Napredne Web Tehnologije Elektrot
 
 Članovi tima (***BOKA***) koji su učestvovali u realizaciji ovog projekta su:
 
-1. Nasiha Imamovic (***nimamovic3@etf.unsa.ba***)
-2. Neira Novalic (***nnovalic1@etf.unsa.ba***)
-3. Mirnesa Salihovic (***msalihovic3@etf.unsa.ba***)
-4. Lejla Pirija (***lpirija1@etf.unsa.ba***)
+1. Adna Fejzic Kovac
+2. Mirnesa Salihovic
+3. Lejla Pirija 
 
 ## Opis projekta
 
-BOKA je aplikacija za rezervaciju mjesta/stola za event u ugostiteljskim objektima. Sastoji se od dvije vrste korisnika: gosta i zaposlenika ugostiteljskog objekta. 
-
-Gost, nakon registracije na aplikaciju, ima mogucnost pregleda svih evenata, kao i ugostiteljskih objekata i ima priliku da rezervise mjesto u lokalu. Gost takodjer moze imati pregled u popunjenim mjestima za event, a dobit ce i notifikaciju o stanju svoje rezervacije. Također, gostu ce biti omogućeno ocjenjivanje usluge lokala.
-
-Zaposlenici ugostiteljskog objekta su duzni unijeti infomracije o stolovima i broju stolica za te stolove, da bi kasnije mogli objaviti event a da bi gosti mogli rezervisati svoje mjesto. Ugostiteljski objekat ce imati mogucnost prihvatanja i odbijanja rezervacije uz obrazloženje, a prilikom svake gostove rezervacije, dobice notifikaciju o tome. 
+MojDoktor web aplikacija služi za komunikaciju između pacijenta i doktora. Osnovna uloga aplikacije je da omogući pacijentima izbor i kontaktiranje doktora specijaliste iz željene oblasti zbog konsultacija i/ili zakazivanja pregleda. Aplikacija je namijenjena svim doktorima koji su zaposleni u određenoj zdravstvenoj ustanovi i žele biti na raspolaganju pacijentima putem online web platforme. Doktori imaju pristup arhivi medicinskih zapisa i zahtjeva pacijenata, a koji su upućeni njima, te mogućnost unosa i ažuriranja istih.. 
 
 ## Pokretanje pomoću Dockera
 
-Nakon što se clone-a repozitorij, potrebno je buildati sve projekte. To se može uraditi sa naredbom kroz konzolu (nalazite se u repozitoriju sa svim projektima):
+Nakon što se clone-a repozitorij, potrebno je buildati docker image za sve projekte. To se može uraditi sa naredbom kroz konzolu (nalazite se u repozitoriju sa svim projektima):
 
-```bash
-./mvnw package -Dmaven.test.skip=true
-```
 pod uslovom da Vam je defaultna verzija Jave na računaru minimalno 11. 
 
-U slučaju da neki build ne prođe, potrebno je ručno buildati projekat koji je pao, ili pokušati sa
 
 ```bash
-mvn clean
-mvn compile
-mvn install
-```
-Nakon uspješnog buildanja, svaki projekat bi trebalo da sadrži target folder sa .jar fileom tog projekta.
+docker build -t user_service .
+docker build -t web-app .
 
-Da bi smo izbuildali image za frontend potrebno je u direktoriju web-app pokrenuti sljedecu komandu:
+baza 
 
-```bash
-docker build -f Dockerfile -t boka/frontend .
+docker run --name basic-postgres --rm -e POSTGRES_USER=debug -e POSTGRES_PASSWORD=debug -e PGDATA=/var/lib/postgresql/data/pgdata -v /tmp:/var/lib/postgresql/data -p 5432:5432 -it postgres:14.1-alpine
+
 ```
 
 Za dalje pokretanje potrebno je imati Docker instaliran na računaru, te opet kroz konzolu (nalazite se u repozitoriju sa svim projektima i docker-compose.yml fileom) pokrenuti **jednu od** sljedeće 2 naredbe:
 
 ```bash
-docker-compose up -d
-docker-compose up
+docker-compose up --build
 ```
 Nakon što se uspješno kreiraju svi containeri potrebno je sačekati da se svi servisi pokrenu, te da se pokrene frontend container, i nakon toga se može pristupiti stranici pomoću: 
 
@@ -51,6 +38,6 @@ Nakon što se uspješno kreiraju svi containeri potrebno je sačekati da se svi 
 
 ## Tehnologije
 
-Unutar projekta, urađena je kompletna web-aplikacija. Sastoji se od 4 mikroservisa: User, Restaurant, Resevation i Notification. Mikroservisi su programirani koristeći Javu i postgesdb za bazu. Frontend aplikacija je React.js aplikacija.
+Unutar projekta, urađena je kompletna web-aplikacija. Sastoji se od 4 mikroservisa: User. Mikroservisi su programirani koristeći Javu i postgesdb za bazu. Frontend aplikacija je React.js aplikacija.
 
 
