@@ -1,6 +1,6 @@
-Projekat je realizovan na predmetu Praktikum - Napredne Web Tehnologije Elektrotehničkog fakulteta u Unverziteta Sarajevu, Master studij, 1. godina.
+Projekat je realizovan na predmetu Tehnologije sigurnosti Elektrotehničkog fakulteta u Unverziteta Sarajevu, Master studij, 1. godina.
 
-Članovi tima (***BOKA***) koji su učestvovali u realizaciji ovog projekta su:
+Članovi tima (***MojDoktor***) koji su učestvovali u realizaciji ovog projekta su:
 
 1. Adna Fejzic Kovac
 2. Mirnesa Salihovic
