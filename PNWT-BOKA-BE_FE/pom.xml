@@ -10,7 +10,6 @@
 
     <modules>
         <module>user_service</module>
-        <module>APIGateway</module>
     </modules>
 
 </project>
