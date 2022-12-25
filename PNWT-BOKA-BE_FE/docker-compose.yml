@@ -1,86 +1,32 @@
 version: '3.9'
 
 services:
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
-    ports:
-      - 5672:5672
-      - 15672:15672
-    restart: on-failure
-    healthcheck:
-      test: [ "CMD", "nc", "-z", "rabbitmq", "5672" ]
-      interval: 5s
-      timeout: 5s
-      retries: 50
-    networks:
-      - nwt
-
   app-db:
+    container_name: app-db
+    hostname: backend-db
     image: postgres:9.6
-    environment:
-      - POSTGRES_USER=someuser
-      - POSTGRES_PASSWORD=pass
     volumes:
       - ./databases.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
     expose:
       - 5432
-    networks:
-      - nwt
-
-
-  eureka:
-    #    image: docker-eureka
-    container_name: eureka
-    build:
-      context: ./service_discovery_eureka
-    expose:
-      - 8761
-    ports:
-      - 8761:8761
-    networks:
-      - nwt
     environment:
-      - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
-      - EUREKA_SERVER=http://eureka:8761/eureka
-    healthcheck:
-      test: [ "CMD", "curl", "-I", "http://eureka:8761" ]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-    deploy:
-      restart_policy:
-        condition: on-failure
-        max_attempts: 5
-
-  configserver:
-    container_name: configserver
-    image: docker-configserver
-    restart: on-failure
-    ports:
-      - 8888:8888
+      POSTGRES_ROOT_HOST: '%'
+      POSTGRES_ROOT_PASSWORD: root
+      POSTGRES_DATABASE: db_users
+      POSTGRES_USER: debug
+      POSTGRES_PASSWORD: debug
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: db_users
     networks:
       - nwt
-    build:
-      context: ./config_server
-    environment:
-      - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
-      - CONFIG_REPO_URI=https://github.com/msalihovic3/config
-    healthcheck:
-      test: [ "CMD", "curl", "-I", "http://configserver:8888" ]
-      interval: 5s
-      timeout: 5s
-      retries: 30
-    deploy:
-      restart_policy:
-        condition: on-failure
-        max_attempts: 10
-
 
   userservice:
     container_name: userservice
     image: docker-user_service
     restart: on-failure
+    expose:
+      - 8091
     ports:
       - 8091:8091
     networks:
@@ -89,21 +35,13 @@ services:
       context: ./user_service
     environment:
       - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
-      - EUREKA_SERVER=http://eureka:8761/eureka
       - JDBC_DATABASE_URL=jdbc:postgresql://app-db:5432/user_db
       - JDBC_DATABASE_USERNAME=someuser
       - JDBC_DATABASE_PASSWORD=pass
-      - CONFIG_SERVER_URI=http://configserver:8888
-      - RABBITMQ_HOST=rabbitmq
+
     depends_on:
-      eureka:
-        condition: service_healthy
       app-db:
         condition: service_started
-      systemeventsservice:
-        condition: service_started
-      configserver:
-        condition: service_healthy
     deploy:
       restart_policy:
         condition: on-failure
@@ -126,8 +64,6 @@ services:
       - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
       - USER_SERVICE_URL=http://userservice:8091
     depends_on:
-      - eureka
-      - configserver
       - userservice
       - app-db
     deploy:
@@ -145,3 +81,16 @@ services:
 networks:
   nwt:
     driver: bridge
+
+
+
+
+
+
+
+
+
+
+
+volumes:
+  mysql_user:
