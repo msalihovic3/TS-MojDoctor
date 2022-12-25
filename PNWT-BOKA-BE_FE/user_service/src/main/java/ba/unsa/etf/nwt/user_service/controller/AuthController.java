@@ -72,8 +72,8 @@ public class AuthController  {
 //            if(user.getIsActive() == false) throw new UsernameNotFoundException("User not found with username or email : " + loginRequest.getEmail());
 
             System.out.println("user");
-            userService.sendMailCodeForLogin(loginRequest.getEmail());
-            return new JwtAuthenticationResponse(3, jwt);
+            String tokennew = userService.sendMailCodeForLogin(loginRequest.getEmail());
+            return new JwtAuthenticationResponse(3, jwt, tokennew );
 
         } catch (UsernameNotFoundException e) {
             throw new UsernameNotFoundException("User not found!");

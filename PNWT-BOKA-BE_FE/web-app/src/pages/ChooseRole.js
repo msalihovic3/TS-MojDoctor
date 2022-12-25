@@ -9,7 +9,8 @@ export const ChooseRole = (props) => {
     const navigate = useNavigate();
     const email = useSelector(state => state.user.email);
     const userId  = useSelector(state => state.user.id)
-
+    const user = useSelector(state => state.user)
+    
     const divBackground = {
         width: "600px",
         backgroundColor: "white",

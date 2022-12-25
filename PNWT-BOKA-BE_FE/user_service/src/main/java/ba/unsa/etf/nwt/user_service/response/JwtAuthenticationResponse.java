@@ -3,11 +3,14 @@ package ba.unsa.etf.nwt.user_service.response;
 public class JwtAuthenticationResponse {
     private Integer userId;
     private String accessToken;
+
+    private String code;
     private String tokenType = "Bearer";
 
-    public JwtAuthenticationResponse(Integer userId, String accessToken) {
+    public JwtAuthenticationResponse(Integer userId, String accessToken, String code) {
         this.userId = userId;
         this.accessToken = accessToken;
+        this.code = code;
     }
 
     public String getAccessToken() {
@@ -24,6 +27,14 @@ public class JwtAuthenticationResponse {
 
     public void setTokenType(String tokenType) {
         this.tokenType = tokenType;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Integer getUserId() {

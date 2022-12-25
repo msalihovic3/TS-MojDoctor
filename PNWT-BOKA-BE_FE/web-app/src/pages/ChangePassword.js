@@ -79,9 +79,15 @@ export const ChangePassword = () => {
                 
                                     new_password: password,
                                     confirm_new_password: repeatedPassword
-                                })).then(() => {
-                                    alert('Confirm new password on mail.');
-                                    navigate('/login');
+                                })).then((data) => {
+                                    // alert('Confirm new password on mail.');
+                                    // navigate('/login');
+
+                                    console.log(data.message)
+                                    console.log("miki")
+                                    let text= 'Confirm new password in next page. Copy code  ' +data.message+"   end paste in form !"
+                                    alert(text);
+                                   navigate('/confirmPassword');
                                 }).catch(() => {setChangePasswordError(true)});
                             })                            
                         });

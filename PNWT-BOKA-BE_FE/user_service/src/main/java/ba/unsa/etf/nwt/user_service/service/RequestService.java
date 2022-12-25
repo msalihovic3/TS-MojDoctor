@@ -22,7 +22,8 @@ public class RequestService {
 
     private final UsersRepository userrepository;
     public List<Request> getAllRequests(Integer id) {
-        return requestRepository.getAllByUserId(id);
+        System.out.println(id);
+        return requestRepository.findAll();
     }
 
     public Response addRequest(RequestRequest request) {
@@ -56,6 +57,8 @@ public class RequestService {
 
         return optionalRequest;
     }
+
+
 
     public List<Request> getRequestByDoctorId(Integer id) {
 

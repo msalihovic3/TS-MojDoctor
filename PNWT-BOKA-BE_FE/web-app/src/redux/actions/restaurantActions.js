@@ -77,8 +77,8 @@ export const getRestaurans = () => async dispatch => {
             //check payload
             payload: res.data
         });
-        console.log("mikiiii")
-        console.log(res)
+        console.log("mikiiii 1111")
+        console.log(res.data)
    
         return Promise.resolve();
     }

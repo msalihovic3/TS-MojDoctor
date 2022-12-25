@@ -31,7 +31,7 @@ export const getUser = (email, password) => async dispatch => {
             payload: res.data.data,
             email: email
         });
-        return Promise.resolve();
+        return Promise.resolve(res.data);
     }
     catch(e){
         dispatch( {
@@ -400,7 +400,8 @@ export const updateUser = (params) => async dispatch => {
             type: GET_USER,
             payload: res.data.data
         });
-        return Promise.resolve();
+        console.log(res)
+        return Promise.resolve(res.data);
     }
     catch(e){
         dispatch( {

@@ -12,12 +12,10 @@ import ba.unsa.etf.nwt.user_service.model.User;
 import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
-import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.validation.*;
@@ -95,8 +93,8 @@ public class UserService {
             System.out.println(newPassword.getEmail());
             System.out.println(user.getName());
             System.out.println(resetToken);
-            mailService.sendmail(newPassword.getEmail(), user.getName(), resetToken, "NEWPASSWORD");
-            return new Response("Successful set new password. Confirm you email", HttpStatus.OK);
+//            mailService.sendmail(newPassword.getEmail(), user.getName(), resetToken, "NEWPASSWORD");
+            return new Response(resetToken, HttpStatus.OK);
         }
         throw new ResourceNotFoundException("Password assigning failed!");
     }
@@ -127,8 +125,8 @@ public class UserService {
         user.setRoles(roles);
         System.out.println(user);
         usersRepository.save(user);
-        System.out.println(user.getEmail());
-        mailService.sendmail(user.getEmail(), user.getName(), user.getPassword(), "REGISTRATION ADMIN");
+//        System.out.println(user.getEmail());
+//        mailService.sendmail(user.getEmail(), user.getName(), user.getPassword(), "REGISTRATION ADMIN");
 
         return new Response("The role is succesfully assigned to the User!", HttpStatus.OK);
     }
@@ -209,7 +207,7 @@ public class UserService {
 
     }
 
-    public Response sendMailCodeForLogin(String userMail ) throws MessagingException, TemplateException, IOException {
+    public String sendMailCodeForLogin(String userMail ) throws MessagingException, TemplateException, IOException {
 
         String resetToken = UUID.randomUUID().toString();
         User user = usersRepository.findByEmail(userMail);
@@ -217,8 +215,8 @@ public class UserService {
         user.setIsActive(false);
         usersRepository.save(user);
 
-        mailService.sendmail(userMail, user.getName(), user.getToken(), "LOGIN");
-        return new Response("Code is send in your mail!", HttpStatus.OK);
+//        mailService.sendmail(userMail, user.getName(), user.getToken(), "LOGIN");
+        return resetToken;
     }
 
 }

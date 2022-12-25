@@ -23,6 +23,8 @@ import AllUsers from './pages/AllUsers';
 import { DoctorProfile } from './pages/DoctorProfile';
 import { DoctorRequests } from './pages/DoctorRequests';
 import { AddPatient } from './pages/AddPatient';
+import { ConfirmPassword } from './pages/ConfirmPassword';
+
 function App() {
   const isDoctor= useSelector(state => { 
   
@@ -43,7 +45,7 @@ function App() {
           <Route path='/doctorHome' element={<DoctorHome/>} />
           <Route path='/changePassword' element={<ChangePassword/>} />
           <Route path='/doctorProfile' element={<DoctorProfile/>} />
-          
+          <Route path='/confirmPassword' element={<ConfirmPassword/>} />
         </Routes>
       </Router>
       </div>
@@ -63,6 +65,7 @@ function App() {
           <Route path='/userProfile' element={<UserProfile/>} />
           <Route path='/myrequest' element={<MyRequests/>} />
          <Route path='/newRequest' element={<NewRequest/>} />
+         <Route path='/confirmPassword' element={<ConfirmPassword/>} />
         </Routes>
       </Router>
       </div>
@@ -85,7 +88,7 @@ function App() {
         <Route path='/adminHome' element={<AdminHome/>} />
         <Route path='/roles' element={<AdminHome/>} />
         <Route path='/users' element={<AllUsers/>} />
-      
+        <Route path='/confirmPassword' element={<ConfirmPassword/>} />
       </Routes>
     </Router>
     </div>
@@ -102,7 +105,8 @@ function App() {
         <Route path='/signup' element={<SignUp/>} />
         <Route path='/role' element={<ChooseRole/>} />
         <Route path='/changePassword' element={<ChangePassword/>} />
-      
+        <Route path='/confirmPassword' element={<ConfirmPassword/>} />
+        
       </Routes>
     </Router>
     </div>

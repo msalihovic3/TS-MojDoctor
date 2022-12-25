@@ -72,8 +72,10 @@ export const Login = () => {
                 }} >Forgot password?</p>
                 <Button text = "Log In" onClick={() => {
                     if (email && password) {
-                        dispatch(getUser(email, password)).then(() => {
-                            alert('sent mail with verification code');
+                        dispatch(getUser(email, password)).then((data) => {
+                            console.log(data.code)
+                             let text= 'copy this code  ' +data.code+"   end paste in form in the next page!"
+                             alert(text);
                             navigate('/confirmLogin');
                            
                         }).catch(() => {setLoginError(true)});
