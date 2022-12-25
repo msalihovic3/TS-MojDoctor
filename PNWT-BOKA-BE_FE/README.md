@@ -10,6 +10,8 @@ Projekat je realizovan na predmetu Tehnologije sigurnosti Elektrotehničkog faku
 
 MojDoktor web aplikacija služi za komunikaciju između pacijenta i doktora. Osnovna uloga aplikacije je da omogući pacijentima izbor i kontaktiranje doktora specijaliste iz željene oblasti zbog konsultacija i/ili zakazivanja pregleda. Aplikacija je namijenjena svim doktorima koji su zaposleni u određenoj zdravstvenoj ustanovi i žele biti na raspolaganju pacijentima putem online web platforme. Doktori imaju pristup arhivi medicinskih zapisa i zahtjeva pacijenata, a koji su upućeni njima, te mogućnost unosa i ažuriranja istih.. 
 
+https://docs.google.com/document/d/1bS9PBUjshQ-DlZBHfd6ppPHO9lHWeIzdy9qxvG2Qdts/edit?usp=share_link
+
 ## Pokretanje pomoću Dockera
 
 Nakon što se clone-a repozitorij, potrebno je buildati docker image za sve projekte. To se može uraditi sa naredbom kroz konzolu (nalazite se u repozitoriju sa svim projektima):
