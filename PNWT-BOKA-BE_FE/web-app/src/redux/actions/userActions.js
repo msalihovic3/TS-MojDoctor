@@ -56,9 +56,7 @@ export const getAllForUser = (id) => async dispatch => {
             }
         });
         const res = await axiosInstance1.get('/user/' + id);
-        console.log("Sve za usera")
-        console.log(res);
-        console.log(res.data.roles[0].id);
+
         dispatch( {
             type: GET_ALL_FOR_USER,
             payload: res.data,
@@ -78,8 +76,7 @@ export const getAllForUser = (id) => async dispatch => {
 
 export const updateUserWithRestaurantId = (email,restaurantId) => async dispatch => {
 
-    console.log(restaurantId)
-    console.log(email)
+
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
@@ -94,7 +91,7 @@ export const updateUserWithRestaurantId = (email,restaurantId) => async dispatch
             "restaurantId": restaurantId
 
         });
-        console.log(res);
+
         dispatch( {
             type: UPDATE_RESTAURANT,
             payload: res.data,
@@ -129,7 +126,7 @@ export const createUser = (name,email, password,phoneNumber) => async dispatch =
             "password": password,
             "phoneNumber":phoneNumber
         });
-        console.log(res);
+
         dispatch( {
             type: CREATE_USER,
             payload: email,
@@ -167,7 +164,7 @@ export const addEmployee = (name,email, password,phoneNumber, restaurantId) => a
             "phoneNumber":phoneNumber,
             id_restaurant: restaurantId
         });
-        console.log(res);
+
         dispatch( {
             type: ADD_NEW_EMPLOYEE,
         });
@@ -223,7 +220,7 @@ export const getUsers = (type) => async dispatch => {
             }
         });
         const res = await axiosInstance1.get('/users', {type});
-        console.log(res.data)
+
         dispatch( {
             type: GET_USERS,
             id: res.data
@@ -441,8 +438,7 @@ export const updateUserProfile = (params, email) => async dispatch => {
 }
 
 export const resetPassword = (email, newpass, newpass2) => async dispatch => {
-    console.log(email)
-    console.log(newpass)
+
     try{
         //to do: make this work properly
         const token = window.localStorage.getItem('accessToken') 

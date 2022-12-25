@@ -45,8 +45,7 @@ export const getRequestsAllGuest = (guestId) => async dispatch => {
 
 export const getReservationsDoctor = (doctorId) => async dispatch => {
     try{
-        console.log(window.localStorage.getItem("accessToken"));
-        console.log("mikica 4")
+
       
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;

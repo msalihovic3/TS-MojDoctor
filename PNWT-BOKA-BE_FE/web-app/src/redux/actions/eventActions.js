@@ -20,7 +20,7 @@ export const getDoctors = (type) => async dispatch => {
             //check payload
             payload: res.data
         });
-        console.log(res);
+
         return Promise.resolve();
     }
     catch(e){
@@ -49,7 +49,7 @@ export const getUsers = () => async dispatch => {
             //check payload
             payload: res.data
         });
-        console.log(res);
+
         return Promise.resolve();
     }
     catch(e){
@@ -79,8 +79,7 @@ export const getRoles = () => async dispatch => {
             //check payload
             payload: res.data
         });
-        console.log(res);
-        console.log("sssssssssss");
+
         return Promise.resolve();
     }
     catch(e){

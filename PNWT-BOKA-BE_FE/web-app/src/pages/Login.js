@@ -51,7 +51,7 @@ export const Login = () => {
         marginTop: "100px",
         flex: 1
     }
-    console.log(user)
+
     return (
         <div style={divBackground}>
 

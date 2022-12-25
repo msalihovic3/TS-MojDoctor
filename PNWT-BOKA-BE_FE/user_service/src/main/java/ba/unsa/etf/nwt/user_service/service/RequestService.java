@@ -26,15 +26,14 @@ public class RequestService {
     }
 
     public Response addRequest(RequestRequest request) {
-        System.out.println(request);
+
         if (request == null) {
             throw new ResourceNotFoundException("Request is empty.");
         }
         Request request1 = new Request();
         request1.setDescription(request.getDescription());
         User user = userrepository.getById(request.getUser());
-        System.out.println(request.getUser());
-        System.out.println("mikiiii");
+
         request1.setUser(userrepository.getById(request.getUser()));
         request1.setDoctor(userrepository.getById(request.getDoctor()));
         request1.setState("State.NA_CEKANJU");

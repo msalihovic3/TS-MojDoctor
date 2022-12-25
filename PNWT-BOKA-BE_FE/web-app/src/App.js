@@ -69,7 +69,7 @@ function App() {
     );
   }else if( isDoctor===1){
 
-  console.log("state.user.roleId 1")
+
   return (
     <div className="App">
     <Router>
