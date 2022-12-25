@@ -35,7 +35,7 @@ export const updateRestaurant = (   description,
             title,
             id_request
         });
-        console.log(res);
+
         dispatch( {
             type: UPDATE_RESTAURANT,
             payload: res.data,
@@ -77,8 +77,6 @@ export const getRestaurans = () => async dispatch => {
             //check payload
             payload: res.data
         });
-        console.log("mikiiii 1111")
-        console.log(res.data)
    
         return Promise.resolve();
     }

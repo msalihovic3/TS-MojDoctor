@@ -51,7 +51,7 @@ export const Login = () => {
         marginTop: "100px",
         flex: 1
     }
-    console.log(user)
+
     return (
         <div style={divBackground}>
 
@@ -73,7 +73,7 @@ export const Login = () => {
                 <Button text = "Log In" onClick={() => {
                     if (email && password) {
                         dispatch(getUser(email, password)).then((data) => {
-                            console.log(data.code)
+
                              let text= 'copy this code  ' +data.code+"   end paste in form in the next page!"
                              alert(text);
                             navigate('/confirmLogin');

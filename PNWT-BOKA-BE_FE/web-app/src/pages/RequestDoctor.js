@@ -13,7 +13,7 @@ export const RequestDoctor = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {restaurantId} = useParams();
-    console.log(restaurantId)
+
     const restaurants = useSelector(state => state.restaurant.restaurants);
     const [res, setRes] = useState(restaurants || []);
     const [saveError, setSaveError] = useState(false);
@@ -40,8 +40,7 @@ export const RequestDoctor = () => {
   
     if (restaurants) {  
         restaurant = restaurants.find((item) => item.id === restaurantId);
-        console.log(restaurants)
-        console.log(restaurant)
+
         // title =restaurant.solution.title  
         if ( restaurant){
            name=restaurant.user.name
@@ -170,9 +169,7 @@ export const RequestDoctor = () => {
                                 }
                             }
                             else if ( solution && title && description) {
-                                console.log("okkk")
-                                console.log(title)
-                                console.log(solution)
+
                                 dispatch(updateRestaurant(   description,
                                     title,
                                     restaurantId, solutionId)).then(() => {

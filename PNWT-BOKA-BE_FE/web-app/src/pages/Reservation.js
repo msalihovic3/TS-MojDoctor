@@ -35,7 +35,7 @@ export const NewRequest = () => {
     users.forEach(element => {
         options.push({value:element["id"], label: element["name"]})
     });
-    console.log(users)
+
     const divTop = {
         borderColor: "red",
         height: "40px",

@@ -145,8 +145,7 @@ export const AddPatient = () => {
                      else if (name && email && password && phoneNumber) {
                         dispatch(addEmployee(name,email,password,phoneNumber, restaurant.id)).then(() => {
                             dispatch(getNewEmployee(email)).then((id) => {
-                                console.log("radi")
-                                console.log(selectedValue)
+
                                 dispatch(setRoleAdmin(selectedValue, id));
                                 alert('Employee added successfully.');
                             })
