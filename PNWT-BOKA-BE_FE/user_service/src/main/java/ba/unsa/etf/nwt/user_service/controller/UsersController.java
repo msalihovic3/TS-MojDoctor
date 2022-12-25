@@ -32,6 +32,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.validation.*;
 
 @AllArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class UsersController {
 

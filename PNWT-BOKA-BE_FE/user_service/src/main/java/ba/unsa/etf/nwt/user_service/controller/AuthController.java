@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/user/auth/")
 public class AuthController  {
 

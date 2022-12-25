@@ -1,7 +1,9 @@
-FROM node:lts-alpine
+FROM node
 WORKDIR /web-app
-COPY ./package.json .
-RUN npm install
+COPY ./package.json /web-app
+ENV NODE_OPTIONS="--openssl-legacy-provider"
+RUN CI=true
+RUN npm install --legacy-peer-deps --save
 COPY . .
-EXPOSE 3000
-CMD npm start
+CMD [ "npm", "run", "start" ]
+

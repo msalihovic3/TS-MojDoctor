@@ -1,96 +1,38 @@
-version: '3.9'
+version: '3'
 
 services:
-  app-db:
-    container_name: app-db
-    hostname: backend-db
-    image: postgres:9.6
-    volumes:
-      - ./databases.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
-    expose:
-      - 5432
+
+  db:
+    image: postgres:14.1-alpine
+    restart: always
     environment:
-      POSTGRES_ROOT_HOST: '%'
-      POSTGRES_ROOT_PASSWORD: root
-      POSTGRES_DATABASE: db_users
-      POSTGRES_USER: debug
-      POSTGRES_PASSWORD: debug
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: db_users
-    networks:
-      - nwt
+      - POSTGRES_USER=debug
+      - POSTGRES_PASSWORD=debug
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+
 
   userservice:
-    container_name: userservice
-    image: docker-user_service
+    container_name: user_service
+    image: user_service
     restart: on-failure
     expose:
       - 8091
     ports:
       - 8091:8091
-    networks:
-      - nwt
-    build:
-      context: ./user_service
-    environment:
-      - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
-      - JDBC_DATABASE_URL=jdbc:postgresql://app-db:5432/user_db
-      - JDBC_DATABASE_USERNAME=someuser
-      - JDBC_DATABASE_PASSWORD=pass
-
     depends_on:
-      app-db:
-        condition: service_started
-    deploy:
-      restart_policy:
-        condition: on-failure
-        max_attempts: 10
-
-
-  #API Gateway nazvan kao localhost...
-  #razlog je jer imamo dosta requestova na frontendu i da ne bi sve mijenjali ostavili smo localhost
-  localhost:
-    container_name: api_gateway
-    image: docker-api_gateway
-    restart: on-failure
-    ports:
-      - 8083:8083
-    networks:
-      - nwt
-    build:
-      context: ./APIGateway
-    environment:
-      - JAVA_TOOL_OPTIONS=-XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xss256k
-      - USER_SERVICE_URL=http://userservice:8091
-    depends_on:
-      - userservice
-      - app-db
-    deploy:
-      restart_policy:
-        condition: on-failure
-        max_attempts: 10
+      - db
 
   web-app:
-    image: boka/frontend
     container_name: web-app
+    image: web-app
     ports:
       - 3000:3000
-
-
-networks:
-  nwt:
-    driver: bridge
-
-
-
-
-
-
-
-
-
-
+    stdin_open:
+      true
 
 volumes:
-  mysql_user:
+  db:
+    driver: local

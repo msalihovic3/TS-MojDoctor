@@ -18,14 +18,14 @@ export const getRequestsAllGuest = (guestId) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
         // window.localStorage.setItem("accessToken", window.localStorage.getItem("accessToken"));
-        const res = await axiosInstance1.get('/user_service/api/v1/request/user/' + guestId);
+        const res = await axiosInstance1.get('/api/v1/request/user/' + guestId);
     
         dispatch( {
             type: GET_RESERVATIONS_GUEST,
@@ -51,14 +51,14 @@ export const getReservationsDoctor = (doctorId) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
         // window.localStorage.setItem("accessToken", window.localStorage.getItem("accessToken"));
-        const res = await axiosInstance1.get('/user_service/api/v1/request/doctor/' + doctorId);
+        const res = await axiosInstance1.get('/api/v1/request/doctor/' + doctorId);
     
         dispatch( {
             type: GET_RESERVATIONS_GUEST,
@@ -81,13 +81,13 @@ export const approveReservation = (reservation_id, guest_id, restaurant_id, appr
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('reservation_service/reservation/approve', {reservation_id, guest_id, restaurant_id, approvedByRestaurant});
+        const res = await axiosInstance1.post('/reservation/approve', {reservation_id, guest_id, restaurant_id, approvedByRestaurant});
         dispatch( {
             type: APPROVE_RESERVATION
         });
@@ -108,14 +108,14 @@ export const deleteUser = (user_id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
         
-        const res = await axiosInstance1.delete('/user_service/delete/'+ user_id);
+        const res = await axiosInstance1.delete('/delete/'+ user_id);
         dispatch( {
             type: DECLINE_RESERVATION,
         });
@@ -136,13 +136,13 @@ export const deleteRequest = (request_id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.delete('/user_service/api/v1/request/'+ request_id);
+        const res = await axiosInstance1.delete('/api/v1/request/'+ request_id);
         dispatch( {
             type: DECLINE_RESERVATION,
         });
@@ -162,13 +162,13 @@ export const addRequest = (description, user, doctor) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/api/v1/request', {description, user, doctor});
+        const res = await axiosInstance1.post('/api/v1/request', {description, user, doctor});
         dispatch( {
             type: RESERVE_RESERVATION,
         });

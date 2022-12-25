@@ -23,13 +23,13 @@ export const updateRestaurant = (   description,
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.put('/user_service/api/v1/solution/'+id, {
+        const res = await axiosInstance1.put('/api/v1/solution/'+id, {
           
             description,
             title,
@@ -63,7 +63,7 @@ export const getRestaurans = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -71,7 +71,7 @@ export const getRestaurans = () => async dispatch => {
         });
    
      
-        const res = await axiosInstance1.get('/user_service/api/v1/request/all');
+        const res = await axiosInstance1.get('/api/v1/request/all');
         dispatch( {
             type: GET_RESTAURANTS,
             //check payload
@@ -98,13 +98,13 @@ export const addNewSolution = (description, title, id_request) => async dispatch
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/api/v1/solution', {
+        const res = await axiosInstance1.post('/api/v1/solution', {
             description,
             title,
             id_request

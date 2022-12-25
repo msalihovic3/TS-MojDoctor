@@ -8,13 +8,13 @@ export const getDoctors = (type) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/users/doctors');
+        const res = await axiosInstance1.get('/users/doctors');
         dispatch( {
             type: GET_EVENTS,
             //check payload
@@ -37,13 +37,13 @@ export const getUsers = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/users');
+        const res = await axiosInstance1.get('/users');
         dispatch( {
             type: GET_EVENTS,
             //check payload
@@ -66,14 +66,14 @@ export const getRoles = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
         console.log('2222')
-        const res = await axiosInstance1.get('/user_service/roles');
+        const res = await axiosInstance1.get('/roles');
         dispatch( {
             type: GET_ROLES,
             //check payload

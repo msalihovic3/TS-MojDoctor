@@ -19,7 +19,7 @@ import axios from 'axios';
 export const getUser = (email, password) => async dispatch => {
     
     try{
-        const res = await axiosInstance.post('/user_service/user/auth/login', {
+        const res = await axiosInstance.post('/user/auth/login', {
             "email": email,
             "password": password
         });
@@ -49,13 +49,13 @@ export const getAllForUser = (id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/user/' + id);
+        const res = await axiosInstance1.get('/user/' + id);
         console.log("Sve za usera")
         console.log(res);
         console.log(res.data.roles[0].id);
@@ -83,14 +83,14 @@ export const updateUserWithRestaurantId = (email,restaurantId) => async dispatch
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'http://localhost:8083',
+        baseURL: 'http://localhost:8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
         }
     });
     try{
-        const res = await axiosInstance1.put('/user_service/user/restaurantId/'+email, {
+        const res = await axiosInstance1.put('/user/restaurantId/'+email, {
             "restaurantId": restaurantId
 
         });
@@ -117,13 +117,13 @@ export const createUser = (name,email, password,phoneNumber) => async dispatch =
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/user', {
+        const res = await axiosInstance1.post('/user', {
             "name":name,
             "email": email,
             "password": password,
@@ -154,13 +154,13 @@ export const addEmployee = (name,email, password,phoneNumber, restaurantId) => a
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/registration/user', {
+        const res = await axiosInstance1.post('/registration/user', {
             "name": name,
             "email": email,
             "password": password,
@@ -188,13 +188,13 @@ export const getMe = (email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/user/email/'+email);
+        const res = await axiosInstance1.get('/user/email/'+email);
         dispatch( {
             type: GET_ME,
             id: res.data
@@ -216,13 +216,13 @@ export const getUsers = (type) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/users', {type});
+        const res = await axiosInstance1.get('/users', {type});
         console.log(res.data)
         dispatch( {
             type: GET_USERS,
@@ -246,13 +246,13 @@ export const getConfirm = (code) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/confirm/token/'+code);
+        const res = await axiosInstance1.get('/confirm/token/'+code);
         dispatch( {
             type: GET_ME,
             id: res.data
@@ -274,13 +274,13 @@ export const getNewEmployee = (email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.get('/user_service/user/email/'+email);
+        const res = await axiosInstance1.get('/user/email/'+email);
         dispatch( {
             type: GET_NEW_EMPLOYEE,
             id: res.data
@@ -325,14 +325,14 @@ export const setRole = (idRole, idUser) => async dispatch => {
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'http://localhost:8083',
+        baseURL: 'http://localhost:8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
         }
     });
     try{
-        const res = await axiosInstance1.post('/user_service/userRole', {
+        const res = await axiosInstance1.post('/userRole', {
             "idRole": idRole,
             "idUser": idUser
         });
@@ -356,14 +356,14 @@ export const setRoleAdmin = (idRole, idUser) => async dispatch => {
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'http://localhost:8083',
+        baseURL: 'http://localhost:8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
         }
     });
     try{
-        const res = await axiosInstance1.post('/user_service/role', {
+        const res = await axiosInstance1.post('/role', {
             "idRole": idRole,
             "idUser": idUser
         });
@@ -389,13 +389,13 @@ export const updateUser = (params) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/user/newpassword', params);
+        const res = await axiosInstance1.post('/user/newpassword', params);
         dispatch( {
             type: GET_USER,
             payload: res.data.data
@@ -417,14 +417,14 @@ export const updateUserProfile = (params, email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
         //to do: make this work properly
-        const res = await axiosInstance1.put('/user_service/delete/update', params);
+        const res = await axiosInstance1.put('/delete/update', params);
         dispatch( {
             type: GET_USER,
             payload: res.data.data
@@ -448,13 +448,13 @@ export const resetPassword = (email, newpass, newpass2) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'http://localhost:8083',
+            baseURL: 'http://localhost:8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
             }
         });
-        const res = await axiosInstance1.post('/user_service/user/newpassword',{
+        const res = await axiosInstance1.post('/user/newpassword',{
             "email": email,
             "new_password": newpass,
             "confirm_new_password": newpass2

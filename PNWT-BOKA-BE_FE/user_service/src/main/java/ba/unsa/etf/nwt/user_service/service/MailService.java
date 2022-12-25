@@ -75,7 +75,7 @@ public class MailService {
             Template t = freemarkerConfig.getTemplate("email-template.ftl");
             Map model = new HashMap();
             model.put("name", name);
-            model.put("token", "http://localhost:8083/user_service/confirm/token/"+resetToken);
+            model.put("token", "http://localhost:8091/confirm/token/"+resetToken);
             String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
             helper.setTo(email);
             helper.setSubject("Confirm your registration");
@@ -94,7 +94,7 @@ public class MailService {
             Template t = freemarkerConfig.getTemplate("email-template-password.ftl");
             Map model = new HashMap();
             System.out.println("code 1");
-            model.put("token", "http://localhost:8083/user_service/confirm/token/"+resetToken);
+            model.put("token", "http://localhost:8091/confirm/token/"+resetToken);
             String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
             helper.setTo(email);
             System.out.println("code 2");

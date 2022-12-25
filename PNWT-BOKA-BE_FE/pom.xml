@@ -10,7 +10,6 @@
 
     <modules>
         <module>user_service</module>
-        <module>config_server</module>
         <module>APIGateway</module>
     </modules>
 

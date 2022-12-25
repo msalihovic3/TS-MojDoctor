@@ -1,6 +1,6 @@
 spring:
   application:
-    name: user-service
+    name: userservice
   config:
     import: optional:configserver:http://localhost:8888
   cloud:
@@ -8,28 +8,29 @@ spring:
       username: msalihovic3
       password: m1234
   datasource:
-    url: 'jdbc:postgresql://localhost:54328/user_db'
-    username: 'postgres'
-    password: 'root'
+    url: 'jdbc:postgresql://localhost:5432/postgres'
+    username: 'debug'
+    password: 'debug'
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
 
-  mail:
-    default-encoding: UTF-8
-    host: smtp.gmail.com
-    username: mklinika22@gmail.com
-    password: vwezaavfnajuzade
-    port: 587
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-    protocol: smtp
-    test-connection: false
+#  mail:
+##    default-encoding: UTF-8
+#    host: smtp.gmail.com
+#    username: mklinika22@gmail.com
+#    password: vwezaavfnajuzade
+#    port: 587
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#    smtp:
+#      ssl:
+#        protocols: TLSv1.2
 #eureka:
 #  client:
 #    serviceUrl:

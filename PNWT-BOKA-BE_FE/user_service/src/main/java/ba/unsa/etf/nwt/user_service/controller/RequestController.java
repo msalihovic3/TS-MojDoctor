@@ -33,6 +33,7 @@ import static ba.unsa.etf.nwt.user_service.utils.ErrorHandlingHelper.handleConst
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/v1/request")
 public class RequestController {
     private final RequestService requestService;
