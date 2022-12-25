@@ -22,7 +22,7 @@ public class RequestService {
 
     private final UsersRepository userrepository;
     public List<Request> getAllRequests(Integer id) {
-        return requestRepository.getAllByUserId(id);
+        return requestRepository.findAll();
     }
 
     public Response addRequest(RequestRequest request) {
