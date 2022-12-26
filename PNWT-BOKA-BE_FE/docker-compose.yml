@@ -14,16 +14,16 @@ services:
       - db:/var/lib/postgresql/data
 
 
-#  userservice:
-#    container_name: user_service
-#    image: user_service
-#    restart: on-failure
-#    expose:
-#      - 8091
-#    ports:
-#      - 8091:8091
-#    depends_on:
-#      - db
+  userservice:
+    container_name: user_service
+    image: user_service
+    restart: on-failure
+    expose:
+      - 8091
+    ports:
+      - 8091:8091
+    depends_on:
+      - db
 
   web-app:
     container_name: web-app

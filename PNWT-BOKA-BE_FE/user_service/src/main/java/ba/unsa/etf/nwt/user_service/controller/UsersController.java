@@ -145,7 +145,7 @@ public class UsersController {
         }
         catch(Exception e) {
 
-            throw new ResourceNotFoundException("Role assigning failed!");
+            throw e;
         }
     }
 
