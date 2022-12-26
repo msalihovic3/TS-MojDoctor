@@ -20,6 +20,8 @@ pod uslovom da Vam je defaultna verzija Jave na računaru minimalno 11.
 
 
 ```bash
+web-app
+
 docker build -t web-app .
 
 baza 
@@ -28,8 +30,7 @@ docker run --name basic-postgres --rm -e POSTGRES_USER=debug -e POSTGRES_PASSWOR
 
 user_service
 
-potrebno je pokrenuti preko IntelliJ IDEA
-jdk 11
+docker build -t user_server .
 
 ```
 
