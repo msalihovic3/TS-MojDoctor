@@ -8,16 +8,19 @@ services:
     environment:
       - POSTGRES_USER=debug
       - POSTGRES_PASSWORD=debug
+      - POSTGRES_DATABASE=postgres
     ports:
       - '5432:5432'
     volumes:
       - db:/var/lib/postgresql/data
 
 
-  userservice:
+  user_service:
     container_name: user_service
-    image: user_service
+    image: user_service:latest
     restart: on-failure
+    environment:
+      HOST_IP: $HOST_IP
     expose:
       - 8091
     ports:
@@ -27,11 +30,16 @@ services:
 
   web-app:
     container_name: web-app
-    image: web-app
+    image: web-app:latest
+    environment:
+      REACT_APP_HOST_IP: $HOST_IP
     ports:
       - 3000:3000
     stdin_open:
       true
+    depends_on:
+      - db
+      - user_service
 
 volumes:
   db:
