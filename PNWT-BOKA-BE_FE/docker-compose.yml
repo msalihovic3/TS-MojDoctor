@@ -17,7 +17,7 @@ services:
 
   user_service:
     container_name: user_service
-    image: user_service:latest
+    image: user_service
     restart: on-failure
     environment:
       HOST_IP: $HOST_IP
@@ -30,9 +30,9 @@ services:
 
   web-app:
     container_name: web-app
-    image: web-app:latest
+    image: web-app
     environment:
-      REACT_APP_HOST_IP: $HOST_IP
+      REACT_APP_HOST_IP: $REACT_APP_HOST_IP
     ports:
       - 3000:3000
     stdin_open:
@@ -43,4 +43,3 @@ services:
 
 volumes:
   db:
-    driver: local
