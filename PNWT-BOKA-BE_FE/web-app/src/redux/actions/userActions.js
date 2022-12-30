@@ -49,7 +49,7 @@ export const getAllForUser = (id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -80,7 +80,7 @@ export const updateUserWithRestaurantId = (email,restaurantId) => async dispatch
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+        baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
@@ -119,7 +119,7 @@ export const createUser = (name,email, password,phoneNumber) => async dispatch =
         console.log(process.env.REACT_APP_HOST_IP)
         console.log("mirnesa")
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -159,7 +159,7 @@ export const addEmployee = (name,email, password,phoneNumber, restaurantId) => a
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -193,7 +193,7 @@ export const getMe = (email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -221,7 +221,7 @@ export const getUsers = (type) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -251,7 +251,7 @@ export const getConfirm = (code) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -279,7 +279,7 @@ export const getNewEmployee = (email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -330,7 +330,7 @@ export const setRole = (idRole, idUser) => async dispatch => {
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+        baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
@@ -361,7 +361,7 @@ export const setRoleAdmin = (idRole, idUser) => async dispatch => {
     const token = window.localStorage.getItem('accessToken') 
     const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
     const axiosInstance1 = axios.create({
-        baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+        baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': auth
@@ -394,7 +394,7 @@ export const updateUser = (params) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -422,7 +422,7 @@ export const updateUserProfile = (params, email) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -452,7 +452,7 @@ export const resetPassword = (email, newpass, newpass2) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth

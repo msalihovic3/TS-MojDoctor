@@ -18,7 +18,7 @@ export const getRequestsAllGuest = (guestId) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -50,7 +50,7 @@ export const getReservationsDoctor = (doctorId) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -80,7 +80,7 @@ export const approveReservation = (reservation_id, guest_id, restaurant_id, appr
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -107,7 +107,7 @@ export const deleteUser = (user_id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -135,7 +135,7 @@ export const deleteRequest = (request_id) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -161,7 +161,7 @@ export const addRequest = (description, user, doctor) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth

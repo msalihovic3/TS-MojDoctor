@@ -23,7 +23,7 @@ export const updateRestaurant = (   description,
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -63,7 +63,7 @@ export const getRestaurans = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -97,7 +97,7 @@ export const addNewSolution = (description, title, id_request) => async dispatch
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth

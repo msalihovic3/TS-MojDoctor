@@ -8,7 +8,7 @@ export const getDoctors = (type) => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -37,7 +37,7 @@ export const getUsers = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
@@ -66,7 +66,7 @@ export const getRoles = () => async dispatch => {
         const token = window.localStorage.getItem('accessToken') 
         const auth = token ? 'Bearer ' + window.localStorage.getItem("accessToken") : undefined;
         const axiosInstance1 = axios.create({
-            baseURL: 'https://'+process.env.REACT_APP_HOST_IP + ':8091',
+            baseURL: 'http://'+process.env.REACT_APP_HOST_IP + ':8091',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': auth
